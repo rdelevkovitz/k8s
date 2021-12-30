@@ -33,6 +33,7 @@ metadata:
   name: my-service # Name of the service
 spec:
   selector:
+  type: LoadBalancer
     app: MyApp    # Run on any pod with label - app: myapp
   ports:          # Map incoming port to target port
   - name: http    # Setting multiple ports listterns 
@@ -43,4 +44,3 @@ spec:
     protocol: TCP
     port: 443
     targetPort: 9388
-  type: LoadBalancer
