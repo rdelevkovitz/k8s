@@ -30,7 +30,7 @@ spec:
 kind: Service      # Create new service
 apiVersion: v1     
 metadata:
-  name: my-service # Name of the service
+  name: my-service1 # Name of the service
 spec:
   type: LoadBalancer
   selector:
