@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend
+  labels:
+    app: ui
+    tier: frontend
+spec:
+  replicas: 3
+  selector:  # Using the selector we tell our replicaset which pods to manage
+    matchLabels:
+      tier: frontend
+  template:   # here we define our PODS Specs (k8s uses go template in the background)
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: music
+      image: yanivomc/spring-music:latest
+      volumeMounts:
+      - name: app-storage
+        mountPath: /mnt/files
+      - name: animals
+        image: supergiantkir/animals:bear
+        volumeMounts:
+        - name: app-storage
+          mountPath: /mnt/files
+  volumes:
+  - name: mydir
+    hostPath:
+      path: /tmp/files/
